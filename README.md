@@ -1,4 +1,3 @@
-Joey Jiemjitpolchai 111613728
 # Smash
 This is my implementation of "smash" (SMAll SHell)
 
@@ -18,15 +17,8 @@ functions are deemed to be self-explanatory based on the function name
 ## How to compile and run
 Run `make` to generate the `smash` binary. You may now run the shell in
 interactive mode by running `./smash` or `./smash -d`. To run in
-non-interactive mode either use the shebang 
-#!/home/jjiemjitpolc/hw3-jjiemjitpolc/smash in your sh file. Or you
+non-interactive mode either use the shebang of wherever smash is installed in your sh file. Or you
 can run `./smash <your_sh_file>`
-
-## Makefile
-All targets BELOW the `clean` target are NOT meant to be used by the grader. They
-are targets for test files during development. Commands the grader SHOULD
-use are `make` and `make clean`. Nothing else is too interesting in
-the Makefile this time.
 
 ## Test Suites and Regression Tests
 Inside `reg_tests/` directory there are 3 test scripts that run
@@ -76,10 +68,7 @@ and every command ending will show it's exit status and say
 
 ## Data Structures
 ### symbol table
-My initial approach to tracking variables was to make a hash table, however after
-emailing the professor he stated 
-"What do you need a hash function for?  The assignment isn’t about optimal efficiency, so even if you use your own simple hash function, or something from any existing C library, that should work fine.  Only if you’re hashing many thousands of entries, would performance start to matter."
-So I went with an extremely simple approach to track variables. There are two
+I went with an extremely simple approach to track variables. There are two
 char* arrays in `symbol_table.h` var_names[] tracks variable names and
 stores the name at an index. The variable names are stored in a linear order
 so O(n) insertion. Coupled with var_names[] insertion, another linear
@@ -98,7 +87,7 @@ Contains important macros that are used. There is documentation on
 these macros and certain functions.
 
 ## `smash.c`
-Buckle up grader because we're getting into the meat and bones of this HW.
+Buckle up reader because we're getting into the meat and bones of this project.
 There are two program flows I will discuss: non-interactive, and interactive
 mode. Some steps are shared between both flows so I will
 state that first.
@@ -127,13 +116,13 @@ After those shared steps the program flow for interactive mode is as follows:
     the shell will clean up all data structures
 
 ### `smash_cd()`
-Uses `chdir(2)` as per HW doc.
+Uses `chdir(2)`
 
 ### `smash_pwd()`
-Uses `getcwd(3)` as per HW doc.
+Uses `getcwd(3)`
 
 ### `smash_echo()`
-Uses `printf()` as per HW doc. The function will check to see if the argument
+Uses `printf()`. The function will check to see if the argument
 to echo contains $ If it does then a look up in the symbol table is performed to
 retrieve and print the variable's value. Else we print the plain argument.
 
@@ -166,8 +155,8 @@ to the background and suspends it via CTRL-Z.
 Parses tokens from the user and sends signal to appropriate process
 
 ### &
-To start up a job in the background a user can type in `CMD1 &` as per the
-HW doc. The shell will return to the foreground as the background process
+To start up a job in the background a user can type in `CMD1 &`. 
+The shell will return to the foreground as the background process
 continues execution. A command you may use to test this is running
 `./background.sh` in the shell in interactive mode.
 
@@ -186,10 +175,4 @@ sends a SIGCONT to that job and then waits for the job to finish before
 returning control to the shell.
 
 ### `smash_background()`
-This handles the `bg` command. It is not quite working as
-when I tested this by suspending `./background.sh` in the background,
-then try to run it in the background with `bg` it seemed to be
-stuck in limbo. 
-
-Due to external circumstances in my personal life, I am unable to continue this
-assignment any further.
+This handles the `bg` command and sends a process to run in the background.
