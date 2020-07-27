@@ -1,0 +1,2 @@
+# smaSH
+A Bash clone
