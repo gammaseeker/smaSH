@@ -2,7 +2,7 @@
 This is my implementation of "smash" (SMAll SHell)
 
     * Can perform subset of commands from Bash
-    * Implements cd, pwd, and echo from scratch (as per hw doc)
+    * Implements cd, pwd, and echo from scratch
     * Implements job control support
     * Implements redirection of input, output, and error
     * Supports creation, reading, and writing to variables
@@ -50,8 +50,7 @@ This test script will test redirection operations. The test covers all
 types of combinations of input, output, and error redirection. The test drivers
 in `reg_tests/redir_cmd`
 have specific output/error files that they produce to check the result.
-The resulting files should be in the absolute path /home/jjiemjitpolc/hw3-jjiemjitpolc
-N/A under a column refers to no file being produced, not a file called N/A.
+\N/A under a column refers to no file being produced, not a file called N/A.
 
     test_driver             STDOUT file                 STDERR file
     * redir_out.sh          redir_out_outfile           N/A
@@ -64,7 +63,7 @@ N/A under a column refers to no file being produced, not a file called N/A.
 If you run `./smash -d` it will activate the shell's debug mode where it will
 write debugging info to stderr. Every command executed will say "RUNNING: <cmd>"
 and every command ending will show it's exit status and say
-"ENDED: <cmd> (ret=%d)" as per the HW doc.
+"ENDED: <cmd> (ret=%d)".
 
 ## Data Structures
 ### symbol table
